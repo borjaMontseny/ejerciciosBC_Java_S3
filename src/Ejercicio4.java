@@ -13,9 +13,9 @@ public class Ejercicio4 {
 
 	public static int metodoFactorial(int numero) {
 		int totalResultado = 1; // Empezamos desde 1
-		for (int i = 1; i <= numero; i++) { 
+		for (int i = 1; i <= numero; i++) {
 			totalResultado = totalResultado * i; // Vamos a acumular el resultado en la propia variable una y otra vez.
-			System.out.print(" " + totalResultado); // Imprimimos esa variable 
+			System.out.print(" " + totalResultado); // Imprimimos esa variable
 		}
 		return totalResultado;
 
