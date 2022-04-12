@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Ejercicio12 {
@@ -17,27 +19,36 @@ public class Ejercicio12 {
 			array1[i] = (int) ((Math.random() * 299)+1);
 		}
 		
-		System.out.print("Introduce el 3r dígito y buscaremos los que acaben en este:"); // Mensaje por pantalla
+		System.out.print("Introduce el 3r dígito y buscaremos los que acaben en este: "); // Mensaje por pantalla
 		int digitoCoincidencia = sc.nextInt(); // Esta es la variable que compararemos con cada int del array
 		
 
+		List<Integer> listaNueva = digitoComprobador(digitoCoincidencia, array1);
+		
+		for (Integer integer : listaNueva) {
+			System.out.println(integer);
+		}
+		
 	}
 
-	public static int digitoComprobador(int numeroX, int[] arrayEjemplo) {
-		
+	public static List<Integer> digitoComprobador(int numeroX, int[] arrayEjemplo) {
+		List<Integer> miLista = new ArrayList<Integer>();
 		for (int i = 0; i < arrayEjemplo.length; i++) {
 			
 			String numeroString = (String.valueOf(numeroX)); // Pasa numeroX de Int a String en numeroString
 			String numeroArray = (String.valueOf(arrayEjemplo[i])); // Pasa arrayEjemplo[i] de Int a String en numeroArray
-			
 			// Este If compara los Strings anteriores
 			// El length retorna la largada de un valor Ej. 11.length = 2
 			// Comprobamos la última posicion de un String teniendo en cuenta
 			// Que habrá que restar la largada -1
-			if (numeroString.equals(numeroArray.charAt(numeroArray.length()-1))) {
-				
+			// La comparación de char con un String no tiene el mismo valor aunque tenga los mismos caracteres
+			// Hay que pasar el char a String
+			String ejemploP = Character.toString(numeroArray.charAt(numeroArray.length()-1));
+			if (numeroString.equals(ejemploP)) {
+				miLista.add(arrayEjemplo[i]);
 			}
 		}
+		return miLista;
 	}
 	
 }
